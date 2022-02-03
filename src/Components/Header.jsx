@@ -14,7 +14,7 @@ function Header() {
                   <div className="header__logo">
                       <img width="38" src={logoSvg} alt="Pizza logo"/>
                       <div>
-                          <h1>Pizza на React/Redux</h1>
+                          <h1>Top Pizza </h1>
                           <p>Самая вкусная пицца в мире!</p>
                       </div>
                   </div>
