@@ -1,46 +1,27 @@
-import React, {useState} from 'react';
+import React from 'react'
+import PropTypes from "prop-types";
 
-// class Categories extends Component {
-//     state = {
-//         activeItem: null,
-//     }
-//     onSelectItem = i =>{
-//         this.setState({activeItem:i})
-//     }
-//
-//     render() {
-//         const {items,onClickItem} = this.props
-//         return (
-//             <div className="categories">
-//                 <ul>
-//                     <li>Все</li>
-//                     {items.map((name,i) => <li
-//                         className={this.state.activeItem===i ? 'active':''}
-//                         onClick={() => this.onSelectItem(i)} key={name}>
-//                         {name}</li>)}
-//                 </ul>
-//             </div>
-//         );
-//     }
-//}
 
-function Categories ({items}) {
-
-   const [state,setState] = useState(null);
-
-   const onSelectItem = (i) => {
-     setState(i)
-   }
+const Categories = React.memo(function Categories ({activeCategory,items,onClickCategory}) {
     return (
         <div className="categories">
                 <ul>
-                    <li className={state===null ? 'active':''}
-                        onClick={()=>onSelectItem(null)}>Все</li>
-                    {items.map((name,i) => <li className={state===i ? 'active':''}
-                                               onClick={()=>onSelectItem(i)} key={name}>{name}</li> )}
+                    <li className={activeCategory === null ? 'active':''}
+                        onClick={()=>onClickCategory(null)}>Все</li>
+                    {items.map((name,i) => <li className={activeCategory === i ? 'active':''}
+                                               onClick={() => onClickCategory(i)} key={`${name}_${i}`}>{name}</li> )}
                 </ul>
         </div>
-        );
+        )
+})
+
+  Categories.propTypes = {
+  // activeCategory: PropTypes.oneOf([PropTypes.number,null]),
+  items: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onClickCategory: PropTypes.func.isRequired,
+
 }
+
+// Categories.defaultProps = {activeCategory: null,items:[]}
 
 export default Categories;
