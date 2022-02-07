@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {Button} from "../index"
 
 
-function Index({id,name,imageUrl,price,types,sizes,onClickAddPizza,addedCount}) {
+function Index({id,info,name,imageUrl,price,types,sizes,onClickAddPizza,addedCount}) {
 
   const typeNames = ['тонкое','традиционное']
   const availableSizes = [26,30,40]
@@ -39,6 +39,7 @@ function Index({id,name,imageUrl,price,types,sizes,onClickAddPizza,addedCount}) 
            src={imageUrl}
            alt="Pizza"/>
       <h4 className="pizza-block__title">{name}</h4>
+      <h5 className="pizza-block__info">{info}</h5>
       <div className="pizza-block__selector">
         <ul>
           {typeNames.map((type,i)=>(
